@@ -15,7 +15,6 @@ public class Task2State extends State {
 
     private HelicopterControlled heli;
     private BitmapFont font;
-    private Texture bg;
     private BackButton backBtn;
     private MoveButton moveLeft;
     private MoveButton moveRight;
@@ -25,7 +24,6 @@ public class Task2State extends State {
     public Task2State(GameStateManager gsm) {
         super(gsm);
         heli = new HelicopterControlled(0, 0);
-        bg = new Texture("bg.png");
         font = new BitmapFont(Gdx.files.internal("fonts/arial.fnt"));
         backBtn = new BackButton();
         moveLeft = new MoveButton(IntroExercise.WIDTH - 450, 50, "controls/left.png");
@@ -38,7 +36,8 @@ public class Task2State extends State {
     protected void handleInput() {
         // Input from onscreen controls
         if(Gdx.input.justTouched()){
-            Rectangle touch = new Rectangle(Gdx.input.getX(), IntroExercise.HEIGHT - Gdx.input.getY(),1,1);
+            Rectangle touch = new Rectangle(Gdx.input.getX(),
+                    IntroExercise.HEIGHT - Gdx.input.getY(),1,1);
             if(touch.overlaps(backBtn.getBounds())) { // User pushed back button
                 gsm.set(new MenuState(gsm));
             } else if (touch.overlaps(moveLeft.getBounds())) {
@@ -95,7 +94,6 @@ public class Task2State extends State {
 
     @Override
     public void dispose() {
-        bg.dispose();
         heli.dispose();
     }
 }

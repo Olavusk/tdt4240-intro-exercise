@@ -1,11 +1,13 @@
 package com.maattss.intro.exercise.states;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
-import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
+import com.maattss.intro.exercise.IntroExercise;
+import com.maattss.intro.exercise.sprites.BackButton;
 import com.maattss.intro.exercise.sprites.Ball;
 import com.maattss.intro.exercise.sprites.PaddleLeft;
 import com.maattss.intro.exercise.sprites.PaddleRight;
@@ -15,45 +17,55 @@ public class Task4State extends State {
     private PaddleLeft paddleLeft;
     private PaddleRight paddleRight;
     private Ball ball;
-    private Texture bg;
+    private BackButton backBtn;
 
     private Vector2 score;
     private BitmapFont font;
-
+    //TODO: Check winner
 
     public Task4State(GameStateManager gsm) {
         super(gsm);
-        paddleLeft = new PaddleLeft(30,30);
-        paddleRight = new PaddleRight(540,30);
+        paddleLeft = new PaddleLeft(64,30);
+        paddleRight = new PaddleRight(1700,30);
         ball = new Ball(300,150);
-        bg = new Texture("pongbg.png");
-        font = new BitmapFont();
+        font = new BitmapFont(Gdx.files.internal("fonts/krungthep.fnt"));
         score = new Vector2(0,0);
+        backBtn = new BackButton();
     }
 
     @Override
     public void handleInput() {
-        if(Gdx.input.isKeyPressed(Input.Keys.X)) {
-            gsm.set(new MenuState(gsm));
+        if(Gdx.input.justTouched()) {
+            Rectangle touch = new Rectangle(Gdx.input.getX(),
+                    IntroExercise.HEIGHT - Gdx.input.getY(), 1, 1);
+            if (touch.overlaps(backBtn.getBounds())) { // User pushed back button
+                gsm.set(new MenuState(gsm));
+            }
         }
     }
 
     @Override
     public void update(float dt) {
         handleInput();
-        paddleRight.update(dt);
-        paddleLeft.update(dt);
+        paddleLeft.update();
+        paddleRight.update();
         ball.update(dt,this, paddleLeft, paddleRight);
     }
 
     @Override
     public void render(SpriteBatch sb) {
         sb.begin();
-        sb.draw(bg,0,0);
+        Gdx.gl.glClearColor(0, 0, 0, 1);
+        sb.draw(backBtn.getTexture(), backBtn.getX(), backBtn.getY());
         sb.draw(paddleRight.getTexture(),paddleRight.getPosition().x,paddleRight.getPosition().y);
         sb.draw(paddleLeft.getTexture(),paddleLeft.getPosition().x,paddleLeft.getPosition().y);
         sb.draw(ball.getTexture(),ball.getPosition().x,ball.getPosition().y,20,20);
-        font.draw(sb,"LEFT: " + ((int)this.score.x) + " RIGHT: " + ((int)this.score.y)+"\nPress x to go back to menu",230,640);
+
+        // Draw scoreboard
+        font.getData().setScale(0.9f);
+        font.setColor(Color.WHITE);
+        font.draw(sb, (int)this.score.x + " : " + (int)this.score.y,
+                IntroExercise.WIDTH / 2 - 100,IntroExercise.HEIGHT - 50);
         sb.end();
     }
 
@@ -62,10 +74,10 @@ public class Task4State extends State {
     }
 
     public void incRightScore() {
-        this.score.y ++;
+        this.score.y++;
     }
     public void incLeftScore() {
-        this.score.x ++;
+        this.score.x++;
     }
 
     @Override

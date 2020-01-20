@@ -20,7 +20,7 @@ public class HelicopterAnimated {
 
     public HelicopterAnimated(int x, int y) {
         Texture texture = new Texture("helianimation.png");
-        heliAnimation = new Animation(new TextureRegion(texture), 4, 0.4f);
+        heliAnimation = new Animation(new TextureRegion(texture), 4, 0.1f);
         position = new Vector2(x,y);
         rand = new Random();
 

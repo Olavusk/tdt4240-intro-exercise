@@ -26,7 +26,6 @@ public class Task3State extends State {
 
     @Override
     public void handleInput() {
-        // TODO: Fix game crashes when pushing back button
         if(Gdx.input.justTouched()){
             Rectangle touch = new Rectangle(Gdx.input.getX(), IntroExercise.HEIGHT - Gdx.input.getY(),1,1);
             if(touch.overlaps(backBtn.getBounds())) { // User pushed back button
