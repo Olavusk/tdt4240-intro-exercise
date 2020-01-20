@@ -19,19 +19,19 @@ public class Task4State extends State {
     private BackButton backBtn;
     private int scoreLeft;
     private int scoreRight;
-    private boolean winner;
+    private String winnerStr;
     private BitmapFont font;
 
     public Task4State(GameStateManager gsm) {
         super(gsm);
-        paddleLeft = new PaddleLeft(64,30);
+        paddleLeft = new PaddleLeft(100,30);
         paddleRight = new PaddleRight(1700,30);
         ball = new Ball();
         font = new BitmapFont(Gdx.files.internal("fonts/krungthep.fnt"));
         backBtn = new BackButton(true);
         scoreRight = 0;
         scoreLeft = 0;
-        winner = false;
+        winnerStr = "";
     }
 
     @Override
@@ -58,25 +58,38 @@ public class Task4State extends State {
         sb.begin();
         Gdx.gl.glClearColor(0, 0, 0, 1);
         sb.draw(backBtn.getTexture(), backBtn.getX(), backBtn.getY());
-        sb.draw(paddleRight.getTexture(),paddleRight.getPosition().x,paddleRight.getPosition().y);
-        sb.draw(paddleLeft.getTexture(),paddleLeft.getPosition().x,paddleLeft.getPosition().y);
-        sb.draw(ball.getTexture(),ball.getPosition().x,ball.getPosition().y,20,20);
+        if (winnerStr != "") {
+            // Draw scoreboard
+            font.getData().setScale(0.9f);
+            font.setColor(Color.WHITE);
+            font.draw(sb,  winnerStr,
+                    300,IntroExercise.HEIGHT / 2 + 100);
+        } else {
+            sb.draw(paddleRight.getTexture(),paddleRight.getPosition().x,paddleRight.getPosition().y);
+            sb.draw(paddleLeft.getTexture(),paddleLeft.getPosition().x,paddleLeft.getPosition().y);
+            sb.draw(ball.getTexture(),ball.getPosition().x,ball.getPosition().y,20,20);
 
-        // Draw scoreboard
-        font.getData().setScale(0.9f);
-        font.setColor(Color.WHITE);
-        font.draw(sb, scoreLeft + " : " + scoreRight,
-                IntroExercise.WIDTH / 2 - 100,IntroExercise.HEIGHT - 50);
+            // Draw scoreboard
+            font.getData().setScale(0.9f);
+            font.setColor(Color.WHITE);
+            font.draw(sb, scoreLeft + " : " + scoreRight,
+                    IntroExercise.WIDTH / 2 - 100,IntroExercise.HEIGHT - 50);
+        }
+
         sb.end();
     }
 
     public void incRightScore() {
-        // TODO: Check winner
         scoreRight++;
+        if(scoreRight >= 1) {
+            winnerStr = "Right player won!";
+        }
     }
     public void incLeftScore() {
-        // TODO: Check winner
         scoreLeft++;
+        if(scoreLeft >= 21) {
+            winnerStr = "Left player won!";
+        }
     }
 
     @Override
