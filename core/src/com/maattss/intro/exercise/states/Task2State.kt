@@ -11,7 +11,7 @@ import com.maattss.intro.exercise.sprites.BackButton
 import com.maattss.intro.exercise.sprites.HelicopterControlled
 import com.maattss.intro.exercise.sprites.MoveButton
 
-class Task2State(gsm: GameStateManager?) : State(gsm) {
+class Task2State(gsm: GameStateManager) : State(gsm) {
     private val heli: HelicopterControlled =
             HelicopterControlled(0, 0)
     private val font: BitmapFont =

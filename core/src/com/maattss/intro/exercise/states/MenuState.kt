@@ -6,7 +6,7 @@ import com.badlogic.gdx.math.Rectangle
 import com.maattss.intro.exercise.IntroExercise
 import com.maattss.intro.exercise.sprites.MenuButton
 
-class MenuState(gsm: GameStateManager?) : State(gsm) {
+class MenuState(gsm: GameStateManager) : State(gsm) {
     private val taskOne: MenuButton = MenuButton(350,
             IntroExercise.HEIGHT / 2 - 128, "menu/one.png")
     private val taskTwo: MenuButton = MenuButton(650,

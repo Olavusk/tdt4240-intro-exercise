@@ -7,7 +7,7 @@ import com.maattss.intro.exercise.IntroExercise
 import com.maattss.intro.exercise.sprites.BackButton
 import com.maattss.intro.exercise.sprites.HelicopterAnimated
 
-class Task3State(gsm: GameStateManager?) : State(gsm) {
+class Task3State(gsm: GameStateManager) : State(gsm) {
     private val heli1: HelicopterAnimated =
             HelicopterAnimated(IntroExercise.WIDTH / 2 + 300, IntroExercise.HEIGHT / 2)
     private val heli2: HelicopterAnimated =
