@@ -1,8 +1,9 @@
 # TDT4240 introduction exercise
-Run the project by opening it in Android studio.
-The game/exercises is presented in landscape and tested with a Nexus 5X running Android 9.0 (Pie) virtual device.
-The first screen presented to the user is the menu screen, where you can choose which task to run.
-Every task has a back button (upper left corner) making it possible to go back to the menu.
+- Run the project by opening it in Android studio.
+- The game/exercises is presented in landscape and tested with a Nexus 5X (emulator) running Android 9.0 (Pie).
+- Most of the code is written in Kotlin, woho
+- The first screen presented to the user is the menu screen, where you can choose which task to run.
+- Every task has a back button (upper left corner) making it possible to go back to the menu.
 ## Task 1 - Sprites
 Basic helicopter moving around on the screen by it self. When hitting the screen edge the helicopter will change direction.
 ## Task 2 - Input and text
