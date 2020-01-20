@@ -7,12 +7,14 @@ import com.maattss.intro.exercise.IntroExercise
 import com.maattss.intro.exercise.states.Task4State
 
 class Ball {
-    val texture: Texture
-    val position: Vector2
-    private var up: Boolean
-    private var right: Boolean
-    private val speed: Int
-    val bounds: Rectangle
+    val texture: Texture = Texture("pong/ball.png")
+    val position: Vector2 = Vector2((IntroExercise.WIDTH / 2).toFloat(),
+            (IntroExercise.HEIGHT / 2).toFloat())
+    private var up: Boolean = true
+    private var right: Boolean = true
+    private val speed: Int = 400
+    val bounds: Rectangle = Rectangle(position.x, position.y, 20f, 20f)
+
     fun update(dt: Float, state: Task4State, pl: LeftPaddle, pr: RightPaddle) {
         bounds.setPosition(position.x, position.y)
         if (bounds.overlaps(pl.bounds) || bounds.overlaps(pr.bounds)) {
@@ -29,8 +31,6 @@ class Ball {
             position.x -= speed
         }
         if (position.x > IntroExercise.WIDTH - 100) {
-            println("Ball pos: " + position.x + "," + position.y)
-            println("Boundaries x: " + IntroExercise.HEIGHT + ", 0")
             position.x = IntroExercise.WIDTH / 2.toFloat()
             position.y = IntroExercise.HEIGHT / 2.toFloat()
             right = false
@@ -38,8 +38,6 @@ class Ball {
             state.incLeftScore()
         }
         if (position.x < 0) {
-            println("Ball pos: " + position.x + "," + position.y)
-            println("Boundaries x: " + IntroExercise.HEIGHT + ", 0")
             position.x = IntroExercise.WIDTH / 2.toFloat()
             position.y = IntroExercise.HEIGHT / 2.toFloat()
             right = true
@@ -56,14 +54,5 @@ class Ball {
         }
         if (up && position.y > IntroExercise.HEIGHT) up = false
         if (!up && position.y < 0) up = true
-    }
-
-    init {
-        position = Vector2((IntroExercise.WIDTH / 2).toFloat(), (IntroExercise.HEIGHT / 2).toFloat())
-        texture = Texture("pong/ball.png")
-        up = true
-        right = true
-        speed = 400
-        bounds = Rectangle(position.x, position.y, 20f, 20f)
     }
 }

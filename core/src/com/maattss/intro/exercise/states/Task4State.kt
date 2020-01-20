@@ -20,6 +20,7 @@ class Task4State(gsm: GameStateManager?) : State(gsm) {
     private var scoreRight: Int = 0
     private var winnerStr: String = ""
     private val font: BitmapFont = BitmapFont(Gdx.files.internal("fonts/krungthep.fnt"))
+
     public override fun handleInput() {
         if (Gdx.input.justTouched()) {
             val touch = Rectangle(Gdx.input.x.toFloat(),

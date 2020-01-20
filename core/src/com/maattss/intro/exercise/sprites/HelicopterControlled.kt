@@ -6,11 +6,11 @@ import com.badlogic.gdx.math.Vector2
 import com.maattss.intro.exercise.IntroExercise
 
 class HelicopterControlled(x: Int, y: Int) {
-    private val heli: Texture
-    val position: Vector2
-    val helicopterSprite: Sprite
-    private val movement: Int
-    private var isFlipped: Boolean
+    private val heli: Texture = Texture("heli/heli.png")
+    val position: Vector2 = Vector2(x.toFloat(), y.toFloat())
+    val helicopterSprite: Sprite = Sprite(heli)
+    private val movement: Int = 10
+    private var isFlipped: Boolean = false
 
     enum class MoveDirection {
         LEFT, RIGHT, UP, DOWN
@@ -49,11 +49,6 @@ class HelicopterControlled(x: Int, y: Int) {
     }
 
     init {
-        position = Vector2(x.toFloat(), y.toFloat())
-        heli = Texture("heli/heli.png")
-        helicopterSprite = Sprite(heli)
         helicopterSprite.flip(true, false)
-        movement = 10
-        isFlipped = false
     }
 }

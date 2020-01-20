@@ -8,9 +8,10 @@ import com.badlogic.gdx.math.Vector2
 import com.maattss.intro.exercise.IntroExercise
 
 class RightPaddle(x: Int, y: Int) {
-    val position: Vector2
-    val texture: Texture
-    val bounds: Rectangle
+    val position: Vector2 = Vector2(x.toFloat(), y.toFloat())
+    val texture: Texture = Texture("pong/paddle.png")
+    val bounds: Rectangle = Rectangle(position.x, position.y,
+            texture.width.toFloat(), texture.height.toFloat())
 
     fun update() {
         bounds.setPosition(position.x, position.y)
@@ -22,11 +23,5 @@ class RightPaddle(x: Int, y: Int) {
         }
         if (Gdx.input.isKeyPressed(Input.Keys.UP)) position.y += 20f
         if (Gdx.input.isKeyPressed(Input.Keys.DOWN)) position.y -= 20f
-    }
-
-    init {
-        position = Vector2(x.toFloat(), y.toFloat())
-        texture = Texture("pong/paddle.png")
-        bounds = Rectangle(position.x, position.y, texture.width.toFloat(), texture.height.toFloat())
     }
 }

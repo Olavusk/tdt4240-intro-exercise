@@ -10,10 +10,6 @@ class GameStateManager {
         states.push(state)
     }
 
-    fun pop() {
-        states.pop().dispose()
-    }
-
     fun set(state: State) {
         states.pop().dispose()
         states.push(state)
