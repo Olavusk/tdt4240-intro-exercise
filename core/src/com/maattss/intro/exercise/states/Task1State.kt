@@ -7,9 +7,10 @@ import com.maattss.intro.exercise.IntroExercise
 import com.maattss.intro.exercise.sprites.BackButton
 import com.maattss.intro.exercise.sprites.Helicopter
 
-class Task1State(gsm: GameStateManager?) : State(gsm) {
+class Task1State(gsm: GameStateManager) : State(gsm) {
     private val heli: Helicopter = Helicopter(0, 0)
     private val backBtn: BackButton = BackButton(false)
+
     override fun handleInput() {
         if (Gdx.input.justTouched()) {
             val touch = Rectangle(Gdx.input.x.toFloat(),

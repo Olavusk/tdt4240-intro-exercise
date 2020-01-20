@@ -7,8 +7,8 @@ import com.maattss.intro.exercise.IntroExercise
 
 class BackButton(white: Boolean) {
     var texture: Texture? = null
-    private val position: Vector2
-    val bounds: Rectangle
+    private val position: Vector2 = Vector2(50f, (IntroExercise.HEIGHT - 100).toFloat())
+    val bounds: Rectangle = Rectangle(position.x, position.y, 100f, 100f)
 
     val x: Float
         get() = position.x
@@ -26,7 +26,5 @@ class BackButton(white: Boolean) {
         } else {
             texture = Texture("buttons/back.png")
         }
-        position = Vector2(50f, (IntroExercise.HEIGHT - 100).toFloat())
-        bounds = Rectangle(position.x, position.y, 100f, 100f)
     }
 }

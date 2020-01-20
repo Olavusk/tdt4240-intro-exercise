@@ -6,13 +6,17 @@ import com.badlogic.gdx.math.Rectangle
 import com.maattss.intro.exercise.IntroExercise
 import com.maattss.intro.exercise.sprites.MenuButton
 
-class MenuState(gsm: GameStateManager?) : State(gsm) {
-    private val taskOne: MenuButton = MenuButton(350, IntroExercise.HEIGHT / 2 - 128, "menu/one.png")
-    private val taskTwo: MenuButton = MenuButton(650, IntroExercise.HEIGHT / 2 - 128, "menu/two.png")
-    private val taskThree: MenuButton = MenuButton(950, IntroExercise.HEIGHT / 2 - 128, "menu/three.png")
-    private val taskFour: MenuButton = MenuButton(1250, IntroExercise.HEIGHT / 2 - 128, "menu/four.png")
+class MenuState(gsm: GameStateManager) : State(gsm) {
+    private val taskOne: MenuButton = MenuButton(350,
+            IntroExercise.HEIGHT / 2 - 128, "menu/one.png")
+    private val taskTwo: MenuButton = MenuButton(650,
+            IntroExercise.HEIGHT / 2 - 128, "menu/two.png")
+    private val taskThree: MenuButton = MenuButton(950,
+            IntroExercise.HEIGHT / 2 - 128, "menu/three.png")
+    private val taskFour: MenuButton = MenuButton(1250,
+            IntroExercise.HEIGHT / 2 - 128, "menu/four.png")
 
-    public override fun handleInput() {
+    override fun handleInput() {
         if (Gdx.input.justTouched()) { // Decide which exercise user has selected
             val touch = Rectangle(Gdx.input.x.toFloat(), Gdx.input.y.toFloat(), 1f, 1f)
             if (touch.overlaps(taskOne.bounds)) {

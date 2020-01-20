@@ -8,20 +8,21 @@ import com.maattss.intro.exercise.states.GameStateManager
 import com.maattss.intro.exercise.states.MenuState
 
 class IntroExercise : ApplicationAdapter() {
-    private var gsm: GameStateManager? = null
-    private var batch: SpriteBatch? = null
+    private lateinit var gsm: GameStateManager
+    private lateinit var batch: SpriteBatch
+
     override fun create() {
         WIDTH = Gdx.graphics.width
         HEIGHT = Gdx.graphics.height
         batch = SpriteBatch()
         gsm = GameStateManager()
-        gsm!!.push(MenuState(gsm))
+        gsm.push(MenuState(gsm))
     }
 
     override fun render() {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT)
-        gsm!!.update(Gdx.graphics.deltaTime)
-        gsm!!.render(batch)
+        gsm.update(Gdx.graphics.deltaTime)
+        gsm.render(batch)
     }
 
     companion object {

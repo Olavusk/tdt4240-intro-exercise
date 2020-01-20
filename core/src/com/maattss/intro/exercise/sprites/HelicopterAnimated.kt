@@ -11,12 +11,12 @@ class HelicopterAnimated(x: Int, y: Int) {
     private val heliAnimation: Animation
     val bounds: Rectangle
     private val position: Vector2
-    private val rand: Random
     private var up: Boolean
     private var right: Boolean
     private val speed: Int
     private val heliWidth: Float
     private val heliHeight: Float
+
     fun update(dt: Float, h2: HelicopterAnimated, h3: HelicopterAnimated) {
         heliAnimation.update(dt)
         bounds.setPosition(position.x, position.y)
@@ -61,12 +61,15 @@ class HelicopterAnimated(x: Int, y: Int) {
         val texture = Texture("heli/helianimation.png")
         heliAnimation = Animation(TextureRegion(texture), 4, 0.1f)
         position = Vector2(x.toFloat(), y.toFloat())
-        rand = Random()
+
+
         val heli = Texture("heli/heli.png")
         heliHeight = heli.height.toFloat()
         heliWidth = heli.width.toFloat()
         heli.dispose()
+
         // Assign random speed and direction to heli
+        val rand = Random()
         speed = 40 * rand.nextInt(20) + 1
         up = rand.nextBoolean()
         right = rand.nextBoolean()

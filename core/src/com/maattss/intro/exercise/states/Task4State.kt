@@ -11,7 +11,7 @@ import com.maattss.intro.exercise.sprites.Ball
 import com.maattss.intro.exercise.sprites.LeftPaddle
 import com.maattss.intro.exercise.sprites.RightPaddle
 
-class Task4State(gsm: GameStateManager?) : State(gsm) {
+class Task4State(gsm: GameStateManager) : State(gsm) {
     private val paddleLeft: LeftPaddle = LeftPaddle(100, 30)
     private val paddleRight: RightPaddle = RightPaddle(1700, 30)
     private val ball: Ball = Ball()
@@ -20,6 +20,7 @@ class Task4State(gsm: GameStateManager?) : State(gsm) {
     private var scoreRight: Int = 0
     private var winnerStr: String = ""
     private val font: BitmapFont = BitmapFont(Gdx.files.internal("fonts/krungthep.fnt"))
+
     public override fun handleInput() {
         if (Gdx.input.justTouched()) {
             val touch = Rectangle(Gdx.input.x.toFloat(),

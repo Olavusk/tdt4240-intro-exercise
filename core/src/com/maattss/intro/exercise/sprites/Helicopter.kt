@@ -6,12 +6,13 @@ import com.badlogic.gdx.math.Vector2
 import com.maattss.intro.exercise.IntroExercise
 
 class Helicopter(x: Int, y: Int) {
-    private val heli: Texture
-    val position: Vector2
-    val helicopterSprite: Sprite
-    private var up: Boolean
-    private var right: Boolean
-    private val speed: Int
+    private val heli: Texture = Texture("heli/heli.png")
+    val position: Vector2 = Vector2(x.toFloat(), y.toFloat())
+    val helicopterSprite: Sprite = Sprite(heli)
+    private var up: Boolean = true
+    private var right: Boolean = true
+    private val speed: Int = 300
+
     fun update(dt: Float) {
         moveX(speed * dt)
         moveY(speed * dt)
@@ -48,12 +49,6 @@ class Helicopter(x: Int, y: Int) {
     }
 
     init {
-        position = Vector2(x.toFloat(), y.toFloat())
-        heli = Texture("heli/heli.png")
-        helicopterSprite = Sprite(heli)
         helicopterSprite.flip(true, false)
-        up = true
-        right = true
-        speed = 300
     }
 }

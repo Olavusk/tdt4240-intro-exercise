@@ -7,10 +7,11 @@ import com.badlogic.gdx.math.Vector2
 import com.maattss.intro.exercise.IntroExercise
 
 class LeftPaddle(x: Int, y: Int) {
-    val position: Vector2
-    val texture: Texture
-    private val speed: Int
-    val bounds: Rectangle
+    val position: Vector2 = Vector2(x.toFloat(), y.toFloat())
+    val texture: Texture = Texture("pong/paddle.png")
+    private val speed: Int = 20
+    val bounds: Rectangle = Rectangle(position.x, position.y,
+            texture.width.toFloat(), texture.height.toFloat())
 
     fun update() {
         bounds.setPosition(position.x, position.y)
@@ -28,12 +29,5 @@ class LeftPaddle(x: Int, y: Int) {
                 position.y -= speed.toFloat()
             }
         }
-    }
-
-    init {
-        position = Vector2(x.toFloat(), y.toFloat())
-        speed = 20
-        texture = Texture("pong/paddle.png")
-        bounds = Rectangle(position.x, position.y, texture.width.toFloat(), texture.height.toFloat())
     }
 }

@@ -5,9 +5,9 @@ import com.badlogic.gdx.math.Rectangle
 import com.badlogic.gdx.math.Vector2
 
 class MoveButton(x: Int, y: Int, texturePath: String?) {
-    val texture: Texture
-    private val position: Vector2
-    val bounds: Rectangle
+    val texture: Texture = Texture(texturePath)
+    private val position: Vector2 = Vector2(x.toFloat(), y.toFloat())
+    val bounds: Rectangle = Rectangle(position.x, position.y, 100f, 100f)
 
     val x: Float
         get() = position.x
@@ -17,11 +17,5 @@ class MoveButton(x: Int, y: Int, texturePath: String?) {
 
     fun dispose() {
         texture.dispose()
-    }
-
-    init {
-        texture = Texture(texturePath)
-        position = Vector2(x.toFloat(), y.toFloat())
-        bounds = Rectangle(position.x, position.y, 100f, 100f)
     }
 }
