@@ -1,14 +1,12 @@
 package com.maattss.intro.exercise.states;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
 import com.maattss.intro.exercise.sprites.MenuButton;
 import com.maattss.intro.exercise.IntroExercise;
 
 public class MenuState extends State{
-    private Texture background;
     private MenuButton taskOne;
     private MenuButton taskTwo;
     private MenuButton taskThree;
@@ -16,7 +14,6 @@ public class MenuState extends State{
 
     public MenuState(GameStateManager gsm) {
         super(gsm);
-        background = new Texture("bg.png");
         taskOne = new MenuButton(350, IntroExercise.HEIGHT / 2 - 128, "menu/one.png");
         taskTwo = new MenuButton(650, IntroExercise.HEIGHT / 2 - 128,"menu/two.png");
         taskThree = new MenuButton(950, IntroExercise.HEIGHT / 2 - 128,"menu/three.png");
@@ -60,7 +57,6 @@ public class MenuState extends State{
 
     @Override
     public void dispose() {
-        background.dispose();
         taskOne.dispose();
         taskTwo.dispose();
         taskThree.dispose();
