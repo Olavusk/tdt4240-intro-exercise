@@ -30,7 +30,7 @@ class Ball {
         } else {
             position.x -= speed
         }
-        if (position.x > IntroExercise.WIDTH - 100) {
+        if (position.x > IntroExercise.WIDTH) {
             position.x = IntroExercise.WIDTH / 2.toFloat()
             position.y = IntroExercise.HEIGHT / 2.toFloat()
             right = false
