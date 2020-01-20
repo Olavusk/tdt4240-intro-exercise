@@ -8,13 +8,13 @@ import com.badlogic.gdx.math.Rectangle;
 import com.maattss.intro.exercise.IntroExercise;
 import com.maattss.intro.exercise.sprites.BackButton;
 import com.maattss.intro.exercise.sprites.Ball;
-import com.maattss.intro.exercise.sprites.PaddleLeft;
-import com.maattss.intro.exercise.sprites.PaddleRight;
+import com.maattss.intro.exercise.sprites.LeftPaddle;
+import com.maattss.intro.exercise.sprites.RightPaddle;
 
 
 public class Task4State extends State {
-    private PaddleLeft paddleLeft;
-    private PaddleRight paddleRight;
+    private LeftPaddle paddleLeft;
+    private RightPaddle paddleRight;
     private Ball ball;
     private BackButton backBtn;
     private int scoreLeft;
@@ -24,8 +24,8 @@ public class Task4State extends State {
 
     public Task4State(GameStateManager gsm) {
         super(gsm);
-        paddleLeft = new PaddleLeft(100,30);
-        paddleRight = new PaddleRight(1700,30);
+        paddleLeft = new LeftPaddle(100,30);
+        paddleRight = new RightPaddle(1700,30);
         ball = new Ball();
         font = new BitmapFont(Gdx.files.internal("fonts/krungthep.fnt"));
         backBtn = new BackButton(true);
@@ -65,6 +65,7 @@ public class Task4State extends State {
             font.draw(sb,  winnerStr,
                     300,IntroExercise.HEIGHT / 2 + 100);
         } else {
+            // Update paddle position
             sb.draw(paddleRight.getTexture(),paddleRight.getPosition().x,paddleRight.getPosition().y);
             sb.draw(paddleLeft.getTexture(),paddleLeft.getPosition().x,paddleLeft.getPosition().y);
             sb.draw(ball.getTexture(),ball.getPosition().x,ball.getPosition().y,20,20);
@@ -81,10 +82,11 @@ public class Task4State extends State {
 
     public void incRightScore() {
         scoreRight++;
-        if(scoreRight >= 1) {
+        if(scoreRight >= 21) {
             winnerStr = "Right player won!";
         }
     }
+
     public void incLeftScore() {
         scoreLeft++;
         if(scoreLeft >= 21) {

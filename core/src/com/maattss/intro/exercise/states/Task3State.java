@@ -17,7 +17,7 @@ public class Task3State extends State {
 
     public Task3State(GameStateManager gsm) {
         super(gsm);
-        // 4 helicopters, each starting in their own corner of the game screen
+        // 3 helicopters, each starting in their spot on the game screen
         heli1 = new HelicopterAnimated(IntroExercise.WIDTH / 2 + 300, IntroExercise.HEIGHT / 2);
         heli2 = new HelicopterAnimated(IntroExercise.WIDTH / 2,IntroExercise.HEIGHT / 2);
         heli3 = new HelicopterAnimated(IntroExercise.WIDTH / 2 - 300,IntroExercise.HEIGHT / 2);
@@ -27,7 +27,8 @@ public class Task3State extends State {
     @Override
     public void handleInput() {
         if(Gdx.input.justTouched()){
-            Rectangle touch = new Rectangle(Gdx.input.getX(), IntroExercise.HEIGHT - Gdx.input.getY(),1,1);
+            Rectangle touch = new Rectangle(Gdx.input.getX(),
+                    IntroExercise.HEIGHT - Gdx.input.getY(),1,1);
             if(touch.overlaps(backBtn.getBounds())) { // User pushed back button
                 gsm.set(new MenuState(gsm));
             }

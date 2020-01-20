@@ -23,7 +23,7 @@ public class Ball {
         bounds = new Rectangle(position.x,position.y,20,20);
     }
 
-    public void update(float dt, Task4State state, PaddleLeft pl, PaddleRight pr) {
+    public void update(float dt, Task4State state, LeftPaddle pl, RightPaddle pr) {
         bounds.setPosition(position.x,position.y);
 
         if(bounds.overlaps(pl.getBounds()) || bounds.overlaps(pr.getBounds())){

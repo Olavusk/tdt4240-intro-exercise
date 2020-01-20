@@ -40,13 +40,17 @@ public class Task2State extends State {
                     IntroExercise.HEIGHT - Gdx.input.getY(),1,1);
             if(touch.overlaps(backBtn.getBounds())) { // User pushed back button
                 gsm.set(new MenuState(gsm));
-            } else if (touch.overlaps(moveLeft.getBounds())) {
+            }
+            if (touch.overlaps(moveLeft.getBounds())) {
                 heli.update(HelicopterControlled.MoveDirection.LEFT);
-            } else if (touch.overlaps(moveRight.getBounds())) {
+            }
+            if (touch.overlaps(moveRight.getBounds())) {
                 heli.update(HelicopterControlled.MoveDirection.RIGHT);
-            } else if (touch.overlaps(moveUp.getBounds())) {
+            }
+            if (touch.overlaps(moveUp.getBounds())) {
                 heli.update(HelicopterControlled.MoveDirection.UP);
-            } else if (touch.overlaps(moveDown.getBounds())) {
+            }
+            if (touch.overlaps(moveDown.getBounds())) {
                 heli.update(HelicopterControlled.MoveDirection.DOWN);
             }
         }
@@ -77,7 +81,7 @@ public class Task2State extends State {
         Gdx.gl.glClearColor(1, 0, 0.996f, 1);
         sb.draw(heli.getHelicopterSprite(),heli.getPosition().x, heli.getPosition().y);
 
-        // Sprite pos
+        // Sprite position
         font.getData().setScale(0.3f);
         sb.draw(backBtn.getTexture(), backBtn.getX(), backBtn.getY());
         font.draw(sb,"[" + heli.getPosition().x + "," + heli.getPosition().y +

@@ -7,17 +7,14 @@ import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.maattss.intro.exercise.IntroExercise;
 
-public class PaddleLeft {
+public class RightPaddle {
     private Vector2 position;
     private Texture paddle;
-    private int speed;
-    private boolean up;
 
     private Rectangle bounds;
 
-    public PaddleLeft(int x, int y){
-        position=new Vector2(x,y);
-        speed = 20;
+    public RightPaddle(int x, int y){
+        position = new Vector2(x,y);
         paddle = new Texture("pong/paddle.png");
         bounds = new Rectangle(position.x, position.y, paddle.getWidth(), paddle.getHeight());
     }
@@ -27,8 +24,8 @@ public class PaddleLeft {
     }
 
     public void update() {
-
         bounds.setPosition(position.x, position.y);
+
         if (position.y < 0) {
             position.y = 0;
         }
@@ -36,20 +33,10 @@ public class PaddleLeft {
             position.y = IntroExercise.HEIGHT - paddle.getHeight();
         }
 
-        if(Gdx.input.isTouched()){
-            int mousePos = IntroExercise.HEIGHT - Gdx.input.getY();
-            if(mousePos - speed > position.y) {
-                position.y +=speed;
-            } else if (mousePos + speed < position.y) {
-                position.y -= speed;
-            }
-        }
+        if(Gdx.input.isKeyPressed(Input.Keys.UP)) position.y += 20;
+        if(Gdx.input.isKeyPressed(Input.Keys.DOWN)) position.y -= 20;
     }
 
-    public Vector2 getPosition() {
-        return position;
-    }
-    public Texture getTexture() {
-        return paddle;
-    }
+    public Vector2 getPosition() { return position; }
+    public Texture getTexture() { return paddle; }
 }
