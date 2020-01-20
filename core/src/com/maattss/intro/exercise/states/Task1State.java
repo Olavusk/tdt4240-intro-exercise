@@ -1,7 +1,6 @@
 package com.maattss.intro.exercise.states;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
 import com.maattss.intro.exercise.IntroExercise;
@@ -15,7 +14,7 @@ public class Task1State extends State {
     public Task1State(GameStateManager gsm) {
         super(gsm);
         heli = new Helicopter(0, 0);
-        backBtn = new BackButton();
+        backBtn = new BackButton(false);
     }
 
     @Override

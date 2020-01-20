@@ -14,9 +14,9 @@ public class Ball {
     private int speed;
     private Rectangle bounds;
 
-    public Ball(int x, int y) {
-        position = new Vector2(x,y);
-        ball = new Texture("ball.png");
+    public Ball() {
+        position = new Vector2(IntroExercise.WIDTH / 2,IntroExercise.HEIGHT / 2);
+        ball = new Texture("pong/ball.png");
         up = true;
         right = true;
         speed = 400;
@@ -42,8 +42,7 @@ public class Ball {
 
         if(right) {
             position.x += speed;
-        }
-        else {
+        } else {
             position.x -= speed;
         }
 

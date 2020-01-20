@@ -5,7 +5,6 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
-import com.badlogic.gdx.math.Vector2;
 import com.maattss.intro.exercise.IntroExercise;
 import com.maattss.intro.exercise.sprites.BackButton;
 import com.maattss.intro.exercise.sprites.Ball;
@@ -18,19 +17,21 @@ public class Task4State extends State {
     private PaddleRight paddleRight;
     private Ball ball;
     private BackButton backBtn;
-
-    private Vector2 score;
+    private int scoreLeft;
+    private int scoreRight;
+    private boolean winner;
     private BitmapFont font;
-    //TODO: Check winner
 
     public Task4State(GameStateManager gsm) {
         super(gsm);
         paddleLeft = new PaddleLeft(64,30);
         paddleRight = new PaddleRight(1700,30);
-        ball = new Ball(300,150);
+        ball = new Ball();
         font = new BitmapFont(Gdx.files.internal("fonts/krungthep.fnt"));
-        score = new Vector2(0,0);
-        backBtn = new BackButton();
+        backBtn = new BackButton(true);
+        scoreRight = 0;
+        scoreLeft = 0;
+        winner = false;
     }
 
     @Override
@@ -64,20 +65,18 @@ public class Task4State extends State {
         // Draw scoreboard
         font.getData().setScale(0.9f);
         font.setColor(Color.WHITE);
-        font.draw(sb, (int)this.score.x + " : " + (int)this.score.y,
+        font.draw(sb, scoreLeft + " : " + scoreRight,
                 IntroExercise.WIDTH / 2 - 100,IntroExercise.HEIGHT - 50);
         sb.end();
     }
 
-    public void setScore(Vector2 score){
-        this.score=score;
-    }
-
     public void incRightScore() {
-        this.score.y++;
+        // TODO: Check winner
+        scoreRight++;
     }
     public void incLeftScore() {
-        this.score.x++;
+        // TODO: Check winner
+        scoreLeft++;
     }
 
     @Override

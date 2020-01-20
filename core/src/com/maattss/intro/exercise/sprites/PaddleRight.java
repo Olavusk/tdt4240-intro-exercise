@@ -15,7 +15,7 @@ public class PaddleRight {
 
     public PaddleRight(int x, int y){
         position=new Vector2(x,y);
-        paddle = new Texture("paddle.png");
+        paddle = new Texture("pong/paddle.png");
         bounds = new Rectangle(position.x, position.y, paddle.getWidth(), paddle.getHeight());
     }
 

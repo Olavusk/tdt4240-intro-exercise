@@ -19,12 +19,12 @@ public class HelicopterAnimated {
     private float heliHeight;
 
     public HelicopterAnimated(int x, int y) {
-        Texture texture = new Texture("helianimation.png");
+        Texture texture = new Texture("heli/helianimation.png");
         heliAnimation = new Animation(new TextureRegion(texture), 4, 0.1f);
         position = new Vector2(x,y);
         rand = new Random();
 
-        Texture heli = new Texture("heli.png");
+        Texture heli = new Texture("heli/heli.png");
         heliHeight = heli.getHeight();
         heliWidth = heli.getWidth();
         heli.dispose();

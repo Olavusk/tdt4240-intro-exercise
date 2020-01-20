@@ -21,7 +21,7 @@ public class Task3State extends State {
         heli1 = new HelicopterAnimated(IntroExercise.WIDTH / 2 + 300, IntroExercise.HEIGHT / 2);
         heli2 = new HelicopterAnimated(IntroExercise.WIDTH / 2,IntroExercise.HEIGHT / 2);
         heli3 = new HelicopterAnimated(IntroExercise.WIDTH / 2 - 300,IntroExercise.HEIGHT / 2);
-        backBtn = new BackButton();
+        backBtn = new BackButton(false);
     }
 
     @Override

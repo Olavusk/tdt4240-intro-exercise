@@ -10,8 +10,12 @@ public class BackButton {
     private Vector2 position;
     private Rectangle bounds;
 
-    public BackButton() {
-        button = new Texture("back.png");
+    public BackButton(boolean white) {
+        if(white) {
+              button = new Texture("buttons/backWhite.png");
+        } else {
+              button = new Texture("buttons/back.png");
+        }
         position = new Vector2(50, IntroExercise.HEIGHT - 100);
         bounds = new Rectangle(position.x, position.y,100,100);
     }

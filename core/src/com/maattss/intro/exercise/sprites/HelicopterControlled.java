@@ -20,7 +20,7 @@ public class HelicopterControlled {
 
     public HelicopterControlled(int x, int y) {
         position = new Vector2(x,y);
-        heli = new Texture("heli.png");
+        heli = new Texture("heli/heli.png");
         heliSprite= new Sprite(heli);
         heliSprite.flip(true,false);
         movement = 10;

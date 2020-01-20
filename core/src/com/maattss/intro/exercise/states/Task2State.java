@@ -25,7 +25,7 @@ public class Task2State extends State {
         super(gsm);
         heli = new HelicopterControlled(0, 0);
         font = new BitmapFont(Gdx.files.internal("fonts/arial.fnt"));
-        backBtn = new BackButton();
+        backBtn = new BackButton(false);
         moveLeft = new MoveButton(IntroExercise.WIDTH - 450, 50, "controls/left.png");
         moveRight = new MoveButton(IntroExercise.WIDTH - 150, 50, "controls/right.png");
         moveDown = new MoveButton(IntroExercise.WIDTH - 300, 50, "controls/down.png");
