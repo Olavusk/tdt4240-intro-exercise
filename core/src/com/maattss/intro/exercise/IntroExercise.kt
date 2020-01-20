@@ -24,10 +24,6 @@ class IntroExercise : ApplicationAdapter() {
         gsm!!.render(batch)
     }
 
-    override fun dispose() {
-        super.dispose()
-    }
-
     companion object {
         @JvmField
         var WIDTH = 0

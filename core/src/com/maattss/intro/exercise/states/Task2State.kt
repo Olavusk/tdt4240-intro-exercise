@@ -2,6 +2,7 @@ package com.maattss.intro.exercise.states
 
 import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.Input
+import com.badlogic.gdx.graphics.Color
 import com.badlogic.gdx.graphics.g2d.BitmapFont
 import com.badlogic.gdx.graphics.g2d.SpriteBatch
 import com.badlogic.gdx.math.Rectangle
@@ -27,12 +28,14 @@ class Task2State(gsm: GameStateManager?) : State(gsm) {
             MoveButton(IntroExercise.WIDTH - 300, 50, "controls/down.png")
 
     override fun handleInput() { // Input from onscreen controls
+        val touch = Rectangle(Gdx.input.x.toFloat(),
+                (IntroExercise.HEIGHT - Gdx.input.y).toFloat(), 1f, 1f)
         if (Gdx.input.justTouched()) {
-            val touch = Rectangle(Gdx.input.x.toFloat(),
-                    (IntroExercise.HEIGHT - Gdx.input.y).toFloat(), 1f, 1f)
+
             if (touch.overlaps(backBtn.bounds)) { // User pushed back button
                 gsm.set(MenuState(gsm))
             }
+        }
             if (touch.overlaps(moveLeft.bounds)) {
                 heli.update(HelicopterControlled.MoveDirection.LEFT)
             }
@@ -45,7 +48,7 @@ class Task2State(gsm: GameStateManager?) : State(gsm) {
             if (touch.overlaps(moveDown.bounds)) {
                 heli.update(HelicopterControlled.MoveDirection.DOWN)
             }
-        }
+
         // Input from keyboard
         if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
             heli.update(HelicopterControlled.MoveDirection.LEFT)
@@ -71,6 +74,7 @@ class Task2State(gsm: GameStateManager?) : State(gsm) {
         sb.draw(heli.helicopterSprite, heli.position.x, heli.position.y)
         // Sprite position
         font.data.setScale(0.3f)
+        font.color = Color.BLACK
         sb.draw(backBtn.texture, backBtn.x, backBtn.y)
         font.draw(sb, "[" + heli.position.x + "," + heli.position.y +
                 "]\n", 150f, IntroExercise.HEIGHT - 50.toFloat())
