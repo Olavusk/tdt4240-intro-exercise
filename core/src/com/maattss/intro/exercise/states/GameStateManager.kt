@@ -19,7 +19,7 @@ class GameStateManager {
         states.peek().update(dt)
     }
 
-    fun render(sb: SpriteBatch?) {
+    fun render(sb: SpriteBatch) {
         states.peek().render(sb)
     }
 }
