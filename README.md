@@ -1,9 +1,11 @@
 # TDT4240 introduction exercise
-- Run the project by opening it in Android studio.
+- Run the project by using the emulatpr in Android studio.
 - The game/exercises is presented in landscape and tested with a Nexus 5X (emulator) running Android 9.0 (Pie).
-- Code is written in Kotlin🥳
-- The first screen presented to the user is the menu screen, where you can choose which task to run.
+- Code is written in Kotlin🎉
+- The first screen presented is the menu scree, where the user can choose which task to run.
 - Every task has a back button (upper left corner) making it possible to go back to the menu.
+- Kudos to Brent Aureli and his ["How to make Video Games: Flappy Bird"-tutorial](https://www.youtube.com/watch?v=rzBVTPaUUDg). The code in the project is greatly inspired by this series.
+
 ## Task 1 - Sprites
 Basic helicopter moving around on the screen by it self. When hitting the screen edge the helicopter will change direction.
 ## Task 2 - Input and text

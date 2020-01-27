@@ -7,5 +7,4 @@ abstract class State(protected var gsm: GameStateManager) {
     abstract fun update(dt: Float)
     abstract fun render(sb: SpriteBatch)
     abstract fun dispose()
-
 }
