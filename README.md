@@ -1,4 +1,5 @@
-# TDT4240 introduction exercise
+# TDT4240 introduction exercise [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](https://github.com/maattss/tdt4240-intro-exercise/blob/master/LICENSE)
+
 - Run the project by using the emulatpr in Android studio.
 - The game/exercises is presented in landscape and tested with a Nexus 5X (emulator) running Android 9.0 (Pie).
 - Code is written in Kotlin🎉
